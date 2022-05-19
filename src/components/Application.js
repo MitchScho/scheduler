@@ -24,12 +24,8 @@ const days = [
 export default function Application(props) {
   const [day, setDay] = useState("Monday");
 
-  const selectDay = (selectedDay) => {
-    console.log("selected day", selectedDay);
-    setDay(selectedDay);
-  };
   
-
+  
   return (
     <main className="layout">
       <section className="sidebar">
@@ -42,9 +38,9 @@ export default function Application(props) {
         <nav className="sidebar__menu">
           <DayList
             days={days}
-            day={day}
-            setDay={selectDay}
-            onChange={(event) => setDay(event.target.value)}
+            value={day}
+            onChange={setDay}
+
           />
         </nav>
         <img
