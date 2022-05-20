@@ -18,8 +18,6 @@ export default function DayList(props) {
   });
 
   return (
-    <>
-      <ul >{daysArray}</ul>
-    </>
+      <ul >{daysArray}</ul> 
   );
 };
