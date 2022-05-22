@@ -3,7 +3,7 @@ import DayList from "./DayList";
 import "components/Application.scss";
 import Appointment from "components/Appointment";
 import axios from 'axios';
-import { getAppointmentsForDay, getInterview } from "helpers/selectors";
+import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
 
 // const appointments = {
 //   "1": {
@@ -69,7 +69,6 @@ export default function Application(props) {
       axios.get("http://localhost:8001/api/interviewers"),
     ])
       .then(all => {
-        console.log("responsefrom all", all)
         setState(prev => ({ ...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }));
       })
       .catch(err => {
@@ -80,14 +79,17 @@ export default function Application(props) {
 
 
   const dailyAppointments = getAppointmentsForDay(state, state.day);
-
+  const interviewers = getInterviewersForDay(state, state.day);
+  console.log("interviewers variable", interviewers);
   const schedule = Object.values(dailyAppointments).map((appointment) => {
     const interview = getInterview(state, appointment.interview);
-    //console.log("appoinment", appointment.interview);
+
     return (
       <Appointment
         key={appointment.id}
         {...appointment}
+        interview={interview}
+        interviewers={interviewers}
       />
     );
   });
