@@ -16,7 +16,7 @@ import {useState} from "react";
     ]);
   }
   const back = () => {
-    //[FIRST]
+  
     if (history.length > 1) {
       setMode(history[history.length - 2])
       setHistory(prev => [

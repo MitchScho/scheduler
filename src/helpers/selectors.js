@@ -13,8 +13,8 @@ export function getAppointmentsForDay(state, day) {
   // now access that specific days appointment array.
   // iterate through it, comparing where it's id matches the id of states.appointments and return that value.
   return foundDay.appointments.map(id => {
-
-    return state.appointments[id]
+  
+    return state.appointments[id];
   });
 }
 
@@ -22,22 +22,16 @@ export function getAppointmentsForDay(state, day) {
 //The function should return a new object containing the interview data when we pass 
 //it an object that contains the interviewer.Otherwise, the function should return null. 
 export function getInterview(state, interview) {
-  //console.log("state", state);
-  //console.log("interview", interview);
   
-    if (!interview || !interview.interviewer) {
+  if (!interview || !interview.interviewer) {
     return null;
-    }
-  for (const interviewer in state.interviewers) {
-    
-    if (interviewer == interview.interviewer) {
-      interview.interviewer = state.interviewers[interviewer];
-    }
   }
   
+  const interviewerId = interview.interviewer;
+  interview.interviewer = state.interviewers[interviewerId];
+  
   return interview;
- 
-};
+ };
 
 export function getInterviewersForDay(state, day) { 
    
@@ -47,7 +41,7 @@ export function getInterviewersForDay(state, day) {
   }
 
   return foundDay.interviewers.map(id => {
-    //console.log("state.interviewers", state.interviewers[id]);
+  
     return state.interviewers[id];
   });
 };
