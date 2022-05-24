@@ -1,6 +1,7 @@
 import React from "react";
 
 const Status = (props) => { 
+  console.log("status props", props);
   return (
     <main className="appointment__card appointment__card--status">
       <img
