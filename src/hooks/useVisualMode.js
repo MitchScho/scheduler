@@ -16,7 +16,7 @@ import {useState} from "react";
     ]);
   }
   const back = () => {
-  console.log("I'm Back")
+  
     if (history.length > 1) {
       setMode(history[history.length - 2])
       setHistory(prev => [

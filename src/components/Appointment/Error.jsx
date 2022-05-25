@@ -1,7 +1,7 @@
 import React from "react";
 
 const Error = (props) => { 
-  console.log("error props", props);
+  //console.log("error props", props);
   return (
     <main className="appointment__card appointment__card--error">
       <section className="appointment__error-message">
