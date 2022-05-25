@@ -61,10 +61,6 @@ export default function Appointment(props) {
     transition(EDIT);
   };
 
-  const exit = () => { 
-    console.log("exit clicked");
-    back()
-  };
 
   return (
     <article className="appointment">
@@ -100,10 +96,10 @@ export default function Appointment(props) {
         />
       )}
       {mode === ERROR_SAVE && (
-        <Error message="ERROR WHEN SAVING" onCLose={exit} />
+        <Error message="ERROR WHEN SAVING" onClose={back} />
       )}
       {mode === ERROR_DELETE && (
-        <Error message="ERROR WHEN DELETING" onCLose={exit} />
+        <Error message="ERROR WHEN DELETING" onClose={back} />
       )}
     </article>
   );

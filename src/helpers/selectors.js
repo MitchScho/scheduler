@@ -23,9 +23,12 @@ export function getAppointmentsForDay(state, day) {
 //it an object that contains the interviewer.Otherwise, the function should return null. 
 export function getInterview(state, interview) {
   
-  if (!interview || !interview.interviewer) {
+  if (!interview) {
     return null;
   }
+  // if (!interview || !interview.interviewer) {
+  //   return null;
+  // }
   
   const interviewerId = interview.interviewer;
   interview.interviewer = state.interviewers[interviewerId];
