@@ -69,7 +69,7 @@ export default function Appointment(props) {
       {mode === SAVING && <Status message="Saving" />}
       {mode === DELETING && <Status message="Deleting" />}
       {mode === CONFIRM && (
-        <Confirm message="Please Confirm" onCancel={back} onConfirm={destroy} />
+        <Confirm message="Delete is final" onCancel={back} onConfirm={destroy} />
       )}
       {mode === SHOW && (
         <Show
