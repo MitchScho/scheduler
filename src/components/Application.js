@@ -22,7 +22,7 @@ const Application = () => {
   const interviewers = getInterviewersForDay(state, state.day);
   const schedule = getAppointmentsForDay(state, state.day).map(appointment => {
 
-    console.log("running application component function", appointment.interview);
+    
     return (
       <Appointment
         key={appointment.id}

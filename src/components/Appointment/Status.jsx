@@ -2,7 +2,7 @@ import React from "react";
 import "./styles.scss";
 
 const Status = (props) => { 
-  console.log("status props", props);
+
   return (
     <main className="appointment__card appointment__card--status">
       <img
