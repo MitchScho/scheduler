@@ -11,12 +11,11 @@ const useApplicationData = () => {
   });
 
   const setDay = (day) => {
-    console.log("day in setDay", day);
-    console.log("state within setDay", state);
+
     const newState = { ...state, day };
-    console.log("new state within setDay", newState);
     setState(newState);
   };
+
 
   useEffect(() => {
     Promise.all([
@@ -38,6 +37,7 @@ const useApplicationData = () => {
       });
   }, []);
 
+
   const bookInterview = (id, interview) => {
     const appointment = {
       ...state.appointments[id],
@@ -50,10 +50,12 @@ const useApplicationData = () => {
 
     return axios.put(`/api/appointments/${id}`, appointment)
       .then(() => {
-        setState({ ...state, appointments, days: updateSpots(state, appointments)
-});
+        setState({
+          ...state, appointments, days: updateSpots(state, appointments)
+        });
       })
   };
+
 
   const cancelInterview = (id) => {
     const appointment = {
@@ -70,23 +72,21 @@ const useApplicationData = () => {
       })
   };
 
+
   const updateSpots = (state, appointments) => {
 
-   //days array is mapped. Find current day in array of days
-    return state.days.map(day => {
+        return state.days.map(day => {     //Find current day in array of days
       if (day.name === state.day) {
-        return {
-          //copy day object to allow value update
-          ...day,
-          //the appointments Array for the day
-          spots: day.appointments
-            .map((id) => appointments[id]) //for every appointment in the array find the object that mathches returns an array of appointment objects
-            .filter(({ interview }) => !interview)// for every appointment check if interview is falsey
-            .length// count array item which are spots availible
-       }
+        return {      //If selected day is day. Copy day object 
+          ...day,                       
+          spots: day.appointments      //Update spots value
+            .map((id) => appointments[id])      // Use appointment id for that day to find the objects that match. 
+            .filter(({ interview }) => !interview)      // for every appointment check if interview is falsey
+            .length       // This is the number of interviews falsy(null)
+        }
       }
       return day
-   })
+    })
   };
 
   return { state, setDay, bookInterview, cancelInterview }
