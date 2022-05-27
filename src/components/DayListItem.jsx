@@ -3,7 +3,7 @@ import "components/DayListItem.scss";
 import classNames from "classnames";
 
 const DayListItem = (props) => {
-  
+
   const dayClass = classNames("day-list__item", {
     "day-list__item--selected": props.selected,
     "day-list__item--full": props.spots === 0,
@@ -18,6 +18,7 @@ const DayListItem = (props) => {
     }
     return `${spots} spots remaining`;
   };
+  
 
   return (
     <li
