@@ -21,3 +21,7 @@ npm test
 ```sh
 npm run storybook
 ```
+## Screenshots
+
+!["Main Scheduler Page"](https://github.com/MitchScho/scheduler/blob/master/docs/schedule-page.png?raw=true)
+!["Booking Form Page"](https://github.com/MitchScho/scheduler/blob/master/docs/book-appointment.png?raw=true)
