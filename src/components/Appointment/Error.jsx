@@ -1,7 +1,8 @@
 import React from "react";
+import "./styles.scss";
 
 const Error = (props) => { 
-  //console.log("error props", props);
+  
   return (
     <main className="appointment__card appointment__card--error">
       <section className="appointment__error-message">

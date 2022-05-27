@@ -2,8 +2,6 @@ import React from "react";
 import "./styles.scss";
 
 const Show = (props) => { 
-  //console.log("show props", props)
-
   
   return (
     <main className="appointment__card appointment__card--show">
@@ -33,4 +31,5 @@ const Show = (props) => {
     </main>
 )
 };
+
 export default Show;

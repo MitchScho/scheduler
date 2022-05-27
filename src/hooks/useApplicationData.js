@@ -11,7 +11,11 @@ const useApplicationData = () => {
   });
 
   const setDay = (day) => {
-    setState({ ...state, day });
+    console.log("day in setDay", day);
+    console.log("state within setDay", state);
+    const newState = { ...state, day };
+    console.log("new state within setDay", newState);
+    setState(newState);
   };
 
   useEffect(() => {

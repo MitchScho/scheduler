@@ -10,7 +10,7 @@ import {
   getInterviewersForDay,
 } from "helpers/selectors";
 
-export default function Application() {
+const Application = () => {
 
   const {
     state,
@@ -18,11 +18,11 @@ export default function Application() {
     bookInterview,
     cancelInterview
   } = useApplicationData();
-  
-const interviewers = getInterviewersForDay(state, state.day);
-  
+
+  const interviewers = getInterviewersForDay(state, state.day);
   const schedule = getAppointmentsForDay(state, state.day).map(appointment => {
-    //console.log("appointment", appointment);
+
+    console.log("running application component function", appointment.interview);
     return (
       <Appointment
         key={appointment.id}
@@ -34,6 +34,7 @@ const interviewers = getInterviewersForDay(state, state.day);
       />
     );
   });
+
 
   return (
     <main className="layout">
@@ -62,3 +63,5 @@ const interviewers = getInterviewersForDay(state, state.day);
     </main>
   );
 }
+
+export default Application;

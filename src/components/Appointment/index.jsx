@@ -7,24 +7,26 @@ import Form from "./Form";
 import Status from "./Status";
 import Confirm from "./Confirm";
 import Error from "./Error";
+import { useEffect } from "react";
+
+const EMPTY = "EMPTY";
+const SHOW = "SHOW";
+const CREATE = "CREATE";
+const SAVING = "SAVING";
+const DELETING = "DELETING";
+const CONFIRM = "CONFIRM";
+const EDIT = "EDIT";
+const ERROR_SAVE = "ERROR_SAVE";
+const ERROR_DELETE = " ERROR_DELETE";
 
 export default function Appointment(props) {
-  //console.log("appointment props", props);
-  const EMPTY = "EMPTY";
-  const SHOW = "SHOW";
-  const CREATE = "CREATE";
-  const SAVING = "SAVING";
-  const DELETING = "DELETING";
-  const CONFIRM = "CONFIRM";
-  const EDIT = "EDIT";
-  const ERROR_SAVE = "ERROR_SAVE";
-  const ERROR_DELETE = " ERROR_DELETE";
-
+  
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
 
   const save = (name, interviewer) => {
+    
     const interview = {
       student: name,
       interviewer,
@@ -57,11 +59,21 @@ export default function Appointment(props) {
   const confirm = () => {
     transition(CONFIRM);
   };
+
   const edit = () => {
     transition(EDIT);
   };
 
+  useEffect(() => {
+    if (props.interview && mode === EMPTY) {
+      transition(SHOW);
+    }
+    if (!props.interview && mode === SHOW) {
+      transition(EMPTY);
+    }
+  },[props.interview, transition, mode])
 
+  
   return (
     <article className="appointment">
       <Header time={props.time} />
@@ -69,14 +81,14 @@ export default function Appointment(props) {
       {mode === SAVING && <Status message="Saving" />}
       {mode === DELETING && <Status message="Deleting" />}
       {mode === CONFIRM && (
-        <Confirm message="Delete is final" onCancel={back} onConfirm={destroy} />
+        <Confirm message="Delete Appointment" onCancel={back} onConfirm={destroy} />
       )}
       {mode === SHOW && (
         <Show
-          student={props.interview?.student}
-          interviewer={props.interview?.interviewer}
+          student={props.interview.student}
+          interviewer={props.interview.interviewer}
           onDelete={confirm}
-          onEdit={edit}
+          onEdit={() => edit()}
         />
       )}
       {mode === CREATE && (

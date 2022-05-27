@@ -1,4 +1,5 @@
 import React from "react";
+import "./styles.scss";
 
 const Status = (props) => { 
   console.log("status props", props);

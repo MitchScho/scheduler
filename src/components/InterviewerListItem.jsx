@@ -4,10 +4,9 @@ import classNames from "classnames";
 
 const InterviewerListItem = (props) => {
   
-  const interviewersClass = classNames('interviewers__item', { 'interviewers__item--selected': props.selected });
+const interviewersClass = classNames('interviewers__item', {'interviewers__item--selected': props.selected});
   
-
-
+  
   return (
     <>
       <li className={interviewersClass} onClick={props.setInterviewer}>
